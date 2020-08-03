@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>fr.aleclerc.windpath</groupId>
-            <artifactId>windpath-path-service-api</artifactId>
+            <artifactId>windpath-path-service-api-java</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

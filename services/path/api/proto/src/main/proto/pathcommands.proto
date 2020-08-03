@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.aleclerc.windpath.service.path.api";
+option java_outer_classname = "PathDomainService";
+
+package path.commands;
+
+service Path {
+    rpc apply (PathCommand) returns (GenericResponse) {
+    }
+}
+
+message PathCommand {
+    ProtoUUID id = 1;
+    oneof command {
+        CreatePathFromGpxCommand createPathFromGpxCommand = 2;
+        RenamePathCommand renamePathCommand = 3;
+    }
+
+}
+
+message CreatePathFromGpxCommand {
+    string name = 1;
+}
+message RenamePathCommand {
+    string name = 1;
+}
+
+message PathCreatedFromGpxEvent {
+    ProtoUUID id = 1;
+    string name = 2;
+}
+message PathRenamedEvent {
+    ProtoUUID id = 1;
+    string name = 2;
+}
+
+
+
+message GenericResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message ProtoUUID {
+    sfixed64 mostSigBits = 1;
+    sfixed64 leastSigBits = 2;
+}

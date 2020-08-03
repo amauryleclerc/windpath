@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.aleclerc.windpath.service.path.api";
+option java_outer_classname = "PathProjectionService";
+
+package path.events;
+import "pathcommands.proto";
+
+service PathProjection {
+    rpc getPathEventStream (PathSession) returns (stream PathEvent) {
+    }
+}
+
+message PathSession{
+
+}
+
+message PathEvent {
+    path.commands.ProtoUUID id = 1;
+
+}

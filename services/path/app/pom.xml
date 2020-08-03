@@ -13,8 +13,13 @@
     <artifactId>windpath-path-service-app</artifactId>
     <dependencies>
         <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.30.9</version>
+        </dependency>
+        <dependency>
             <groupId>fr.aleclerc.windpath</groupId>
-            <artifactId>windpath-path-service-api</artifactId>
+            <artifactId>windpath-path-service-api-java</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
@@ -37,16 +42,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-mongodb-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxb-provider</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-grpc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.axonframework</groupId>

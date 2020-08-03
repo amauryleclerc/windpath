@@ -1,19 +1,16 @@
 package fr.aleclerc.windpath.service.path.domain;
 
-import com.topografix.gpx._1._0.Gpx;
-import fr.aleclerc.windpath.service.path.api.commands.CreatePathFormGpxCommand;
-import fr.aleclerc.windpath.service.path.api.commands.RenamePathCommand;
-import fr.aleclerc.windpath.service.path.api.events.PathCreatedFromGpxEvent;
-import fr.aleclerc.windpath.service.path.api.events.PathRenamedEvent;
+import fr.aleclerc.windpath.service.path.api.*;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.messaging.annotation.MetaDataValue;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.modelling.command.AggregateRoot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 @AggregateRoot
 public class PathAggregate {
@@ -24,19 +21,23 @@ public class PathAggregate {
     private String name;
 
     @CommandHandler
-    public PathAggregate(CreatePathFormGpxCommand command) {
-        AggregateLifecycle.apply(new PathCreatedFromGpxEvent(command.getId(), command.getGpx()));
+    public PathAggregate(CreatePathFromGpxCommand command, @MetaDataValue("id") UUID id) {
+        AggregateLifecycle.apply(PathCreatedFromGpxEvent.newBuilder()
+                .setId(UUIDUtils.toProtoUUID(id))
+                .setName(command.getName()).build());
     }
 
     @CommandHandler
-    public void handle(RenamePathCommand cmd) {
-        AggregateLifecycle.apply(new PathRenamedEvent(id, cmd.getName()));
+    public void handle(RenamePathCommand command) {
+        AggregateLifecycle.apply(PathRenamedEvent.newBuilder()
+                .setId(UUIDUtils.toProtoUUID(id))
+                .setName(command.getName()).build());
     }
 
     @EventSourcingHandler
     public void on(PathCreatedFromGpxEvent evt) {
-        id = evt.getId();
-        name = evt.getGpx().getTrk().stream().map(Gpx.Trk::getName).collect(Collectors.joining("/"));
+        id = UUIDUtils.toUUID(evt.getId()).toString();
+        name = evt.getName();
         LOGGER.info("Path {} with name {} created", id, name);
     }
 

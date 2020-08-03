@@ -14,8 +14,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>api</module>
+        <module>api/proto</module>
+        <module>api/java</module>
         <module>domain</module>
         <module>app</module>
+        <module>client</module>
     </modules>
 </project>

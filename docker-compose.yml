@@ -1,11 +1,37 @@
 version: "3.8"
 services:
   axon-server:
-    image: axoniq/axonserver:4.3.5
+    image: axoniq/axonserver:4.3.6
     hostname: axonserver
     container_name: axon-server
+    volumes:
+      - axonserver-data:/data
+      - axonserver-events:/eventdata
+      - axonserver-config:/config
     ports:
       - 8024:8024
       - 8124:8124
+      - 8224:8224
     environment:
+      AXONIQ_AXONSERVER_NAME: windpath_axonserver
       AXONSERVER_HOSTNAME: axonserver
+      AXONIQ_AXONSERVER_DEVMODE_ENABLED: "true"
+  envoy:
+    build:
+      context: ./web/envoy/
+      dockerfile: ./Dockerfile
+    image: windpath/proxy:latest
+    ports:
+      - "8082:8082"
+      - "9901:9901"
+  web:
+    build:
+      context: ./web/
+      dockerfile: ./Dockerfile
+    image: windpath/web:latest
+    ports:
+      - "8081:80"
+volumes:
+  axonserver-data:
+  axonserver-events:
+  axonserver-config:
