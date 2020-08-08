@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for path.events
+ * @fileoverview gRPC-Web generated client stub for path.projection
  * @enhanceable
  * @public
  */
@@ -13,11 +13,12 @@
 
 import * as grpcWeb from 'grpc-web';
 
-import * as pathcommands_pb from './pathcommands_pb';
+import * as common_pb from './common_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 import {
-  PathEvent,
-  PathSession} from './patheventprojection_pb';
+  PathSession,
+  PathSummaryProjectionEvent} from './patheventprojection_pb';
 
 export class PathProjectionClient {
   client_: grpcWeb.AbstractClientBase;
@@ -38,23 +39,23 @@ export class PathProjectionClient {
     this.options_ = options;
   }
 
-  methodInfogetPathEventStream = new grpcWeb.AbstractClientBase.MethodInfo(
-    PathEvent,
+  methodInfogetPathSummaryEventStream = new grpcWeb.AbstractClientBase.MethodInfo(
+    PathSummaryProjectionEvent,
     (request: PathSession) => {
       return request.serializeBinary();
     },
-    PathEvent.deserializeBinary
+    PathSummaryProjectionEvent.deserializeBinary
   );
 
-  getPathEventStream(
+  getPathSummaryEventStream(
     request: PathSession,
     metadata?: grpcWeb.Metadata) {
     return this.client_.serverStreaming(
       this.hostname_ +
-        '/path.events.PathProjection/getPathEventStream',
+        '/path.projection.PathProjection/getPathSummaryEventStream',
       request,
       metadata || {},
-      this.methodInfogetPathEventStream);
+      this.methodInfogetPathSummaryEventStream);
   }
 
 }

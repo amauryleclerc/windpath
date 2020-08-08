@@ -18,6 +18,10 @@
             <artifactId>windpath-path-service-api-proto</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>

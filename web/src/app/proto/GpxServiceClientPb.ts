@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for path.commands
+ * @fileoverview gRPC-Web generated client stub for path.gpx
  * @enhanceable
  * @public
  */
@@ -14,11 +14,11 @@
 import * as grpcWeb from 'grpc-web';
 
 import * as common_pb from './common_pb';
-import * as gpx_pb from './gpx_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
-import {PathCommand} from './pathcommands_pb';
+import {GpxXmlWrapper} from './gpx_pb';
 
-export class PathClient {
+export class GpxImportServiceClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -37,44 +37,44 @@ export class PathClient {
     this.options_ = options;
   }
 
-  methodInfoapply = new grpcWeb.AbstractClientBase.MethodInfo(
+  methodInfoimportGpx = new grpcWeb.AbstractClientBase.MethodInfo(
     common_pb.GenericResponse,
-    (request: PathCommand) => {
+    (request: GpxXmlWrapper) => {
       return request.serializeBinary();
     },
     common_pb.GenericResponse.deserializeBinary
   );
 
-  apply(
-    request: PathCommand,
+  importGpx(
+    request: GpxXmlWrapper,
     metadata: grpcWeb.Metadata | null): Promise<common_pb.GenericResponse>;
 
-  apply(
-    request: PathCommand,
+  importGpx(
+    request: GpxXmlWrapper,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
                response: common_pb.GenericResponse) => void): grpcWeb.ClientReadableStream<common_pb.GenericResponse>;
 
-  apply(
-    request: PathCommand,
+  importGpx(
+    request: GpxXmlWrapper,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.Error,
                response: common_pb.GenericResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/path.commands.Path/apply',
+          '/path.gpx.GpxImportService/importGpx',
         request,
         metadata || {},
-        this.methodInfoapply,
+        this.methodInfoimportGpx,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/path.commands.Path/apply',
+      '/path.gpx.GpxImportService/importGpx',
     request,
     metadata || {},
-    this.methodInfoapply);
+    this.methodInfoimportGpx);
   }
 
 }

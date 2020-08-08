@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.config;
+package fr.aleclerc.windpath.service.path.config;
 
 import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.commandhandling.distributed.RoutingStrategy;

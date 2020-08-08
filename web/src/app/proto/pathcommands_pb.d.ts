@@ -1,8 +1,11 @@
 import * as jspb from "google-protobuf"
 
+import * as common_pb from './common_pb';
+import * as gpx_pb from './gpx_pb';
+
 export class PathCommand extends jspb.Message {
-  getId(): ProtoUUID | undefined;
-  setId(value?: ProtoUUID): PathCommand;
+  getId(): common_pb.ProtoUUID | undefined;
+  setId(value?: common_pb.ProtoUUID): PathCommand;
   hasId(): boolean;
   clearId(): PathCommand;
 
@@ -28,7 +31,7 @@ export class PathCommand extends jspb.Message {
 
 export namespace PathCommand {
   export type AsObject = {
-    id?: ProtoUUID.AsObject,
+    id?: common_pb.ProtoUUID.AsObject,
     createpathfromgpxcommand?: CreatePathFromGpxCommand.AsObject,
     renamepathcommand?: RenamePathCommand.AsObject,
   }
@@ -41,8 +44,10 @@ export namespace PathCommand {
 }
 
 export class CreatePathFromGpxCommand extends jspb.Message {
-  getName(): string;
-  setName(value: string): CreatePathFromGpxCommand;
+  getGpx(): gpx_pb.Gpx | undefined;
+  setGpx(value?: gpx_pb.Gpx): CreatePathFromGpxCommand;
+  hasGpx(): boolean;
+  clearGpx(): CreatePathFromGpxCommand;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreatePathFromGpxCommand.AsObject;
@@ -54,7 +59,7 @@ export class CreatePathFromGpxCommand extends jspb.Message {
 
 export namespace CreatePathFromGpxCommand {
   export type AsObject = {
-    name: string,
+    gpx?: gpx_pb.Gpx.AsObject,
   }
 }
 
@@ -77,8 +82,8 @@ export namespace RenamePathCommand {
 }
 
 export class PathCreatedFromGpxEvent extends jspb.Message {
-  getId(): ProtoUUID | undefined;
-  setId(value?: ProtoUUID): PathCreatedFromGpxEvent;
+  getId(): common_pb.ProtoUUID | undefined;
+  setId(value?: common_pb.ProtoUUID): PathCreatedFromGpxEvent;
   hasId(): boolean;
   clearId(): PathCreatedFromGpxEvent;
 
@@ -95,14 +100,14 @@ export class PathCreatedFromGpxEvent extends jspb.Message {
 
 export namespace PathCreatedFromGpxEvent {
   export type AsObject = {
-    id?: ProtoUUID.AsObject,
+    id?: common_pb.ProtoUUID.AsObject,
     name: string,
   }
 }
 
 export class PathRenamedEvent extends jspb.Message {
-  getId(): ProtoUUID | undefined;
-  setId(value?: ProtoUUID): PathRenamedEvent;
+  getId(): common_pb.ProtoUUID | undefined;
+  setId(value?: common_pb.ProtoUUID): PathRenamedEvent;
   hasId(): boolean;
   clearId(): PathRenamedEvent;
 
@@ -119,52 +124,8 @@ export class PathRenamedEvent extends jspb.Message {
 
 export namespace PathRenamedEvent {
   export type AsObject = {
-    id?: ProtoUUID.AsObject,
+    id?: common_pb.ProtoUUID.AsObject,
     name: string,
-  }
-}
-
-export class GenericResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): GenericResponse;
-
-  getMessage(): string;
-  setMessage(value: string): GenericResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GenericResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GenericResponse): GenericResponse.AsObject;
-  static serializeBinaryToWriter(message: GenericResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GenericResponse;
-  static deserializeBinaryFromReader(message: GenericResponse, reader: jspb.BinaryReader): GenericResponse;
-}
-
-export namespace GenericResponse {
-  export type AsObject = {
-    success: boolean,
-    message: string,
-  }
-}
-
-export class ProtoUUID extends jspb.Message {
-  getMostsigbits(): number;
-  setMostsigbits(value: number): ProtoUUID;
-
-  getLeastsigbits(): number;
-  setLeastsigbits(value: number): ProtoUUID;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ProtoUUID.AsObject;
-  static toObject(includeInstance: boolean, msg: ProtoUUID): ProtoUUID.AsObject;
-  static serializeBinaryToWriter(message: ProtoUUID, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ProtoUUID;
-  static deserializeBinaryFromReader(message: ProtoUUID, reader: jspb.BinaryReader): ProtoUUID;
-}
-
-export namespace ProtoUUID {
-  export type AsObject = {
-    mostsigbits: number,
-    leastsigbits: number,
   }
 }
 

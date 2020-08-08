@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.aleclerc.windpath.service.path.api.gpx";
+option java_outer_classname = "GpxImport";
+
+package path.gpx;
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+service GpxImportService {
+    rpc importGpx (GpxXmlWrapper) returns (path.common.GenericResponse) {
+    }
+}
+
+message GpxXmlWrapper {
+    bytes gpx = 1;
+}
+
+message Gpx{
+    google.protobuf.Timestamp time = 1;
+    Bounds bounds = 2;
+    repeated Track tracks = 3;
+}
+
+message Bounds {
+    double minlat = 1;
+    double minlon = 2;
+    double maxlat = 3;
+    double maxlon = 4;
+}
+
+message Point {
+    double lat = 1;
+    double lon = 2;
+    double ele = 3;
+    google.protobuf.Timestamp time = 4;
+    double speed = 5;
+}
+
+message Segment {
+    repeated Point points = 1;
+}
+
+message Track {
+    string name = 1;
+    repeated Segment segments = 2;
+}
+
+

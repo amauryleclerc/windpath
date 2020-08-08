@@ -23,11 +23,6 @@
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>fr.aleclerc.windpath</groupId>
-            <artifactId>windpath-path-service-domain</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy</artifactId>
         </dependency>
@@ -60,6 +55,16 @@
         <dependency>
             <groupId>org.axonframework</groupId>
             <artifactId>axon-server-connector</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle-map</artifactId>
+            <version>3.19.41</version>
+        </dependency>
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>mutiny-rxjava</artifactId>
+            <version>0.7.0</version>
         </dependency>
     </dependencies>
     <build>

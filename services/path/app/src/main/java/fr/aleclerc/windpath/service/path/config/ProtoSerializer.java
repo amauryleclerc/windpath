@@ -1,7 +1,6 @@
-package fr.aleclerc.windpath.config;
+package fr.aleclerc.windpath.service.path.config;
 
 import com.google.protobuf.Message;
-import org.axonframework.axonserver.connector.util.GrpcSerializedObject;
 import org.axonframework.serialization.*;
 import org.axonframework.serialization.json.JacksonSerializer;
 import org.slf4j.Logger;
@@ -23,7 +22,7 @@ public class ProtoSerializer implements Serializer {
 
     @Override
     public <T> SerializedObject<T> serialize(Object object, Class<T> expectedRepresentation) {
-        LOGGER.info("Serialize {}", object.getClass());
+        LOGGER.trace("Serialize {}", object.getClass());
         if (object instanceof Message && expectedRepresentation.isAssignableFrom(byte[].class)) {
             final byte[] serializedBytes = ((Message) object).toByteArray();
             final T serializedContent = converter.convert(serializedBytes, expectedRepresentation);
@@ -41,7 +40,7 @@ public class ProtoSerializer implements Serializer {
     @Override
     public <S, T> T deserialize(SerializedObject<S> serializedObject) {
         final Class<T> clazz = classForType(serializedObject.getType());
-        LOGGER.info("deserialize {} from {}", clazz, serializedObject.getContentType());
+        LOGGER.trace("deserialize {} from {}", clazz, serializedObject.getContentType());
         if (Message.class.isAssignableFrom(clazz) && serializedObject.getContentType().isAssignableFrom(byte[].class)) {
             try {
                 final Method method = clazz.getDeclaredMethod(PARSE_FROM, byte[].class);

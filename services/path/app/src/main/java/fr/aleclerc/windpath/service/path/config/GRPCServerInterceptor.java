@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.config;
+package fr.aleclerc.windpath.service.path.config;
 
 import io.grpc.*;
 

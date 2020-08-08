@@ -31,6 +31,12 @@ services:
     image: windpath/web:latest
     ports:
       - "8081:80"
+  grpcox:
+    image: gusaul/grpcox:latest
+    volumes:
+      - ./log:/log
+    ports:
+      - "6969:6969"
 volumes:
   axonserver-data:
   axonserver-events:

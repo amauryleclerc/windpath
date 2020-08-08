@@ -1,9 +1,9 @@
-package fr.aleclerc.windpath.resource;
+package fr.aleclerc.windpath.service.path.handler;
 
 
 import com.google.protobuf.Message;
-import fr.aleclerc.windpath.config.AxonConfig;
-import fr.aleclerc.windpath.config.PathCommandGateway;
+import fr.aleclerc.windpath.service.path.config.AxonConfig;
+import fr.aleclerc.windpath.service.path.config.PathCommandGateway;
 import fr.aleclerc.windpath.service.path.api.*;
 import io.smallrye.mutiny.Uni;
 import org.slf4j.Logger;
@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class CommandResource extends MutinyPathGrpc.PathImplBase {
-    private final static Logger LOGGER = LoggerFactory.getLogger(AxonConfig.class);
+public class PathCommandHandler extends MutinyPathGrpc.PathImplBase {
+    private final static Logger LOGGER = LoggerFactory.getLogger(PathCommandHandler.class);
     @Inject
     PathCommandGateway gateway;
 
