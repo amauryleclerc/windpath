@@ -1,6 +1,7 @@
-package fr.aleclerc.windpath.service.path.projection;
+package fr.aleclerc.windpath.service.path.projection.map;
 
 import com.google.protobuf.Message;
+import fr.aleclerc.windpath.service.path.projection.PathSummaryProjection;
 import net.openhft.chronicle.bytes.Bytes;
 import net.openhft.chronicle.hash.serialization.BytesWriter;
 import org.jetbrains.annotations.NotNull;

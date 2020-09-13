@@ -1,0 +1,12 @@
+<div class="col-md-3">
+    <div *ngIf="path">
+        <h1>{{path.getName()}}</h1>
+       
+        <p class="mb-1">Date :  {{path.getTime().getSeconds()*1000 | date: 'dd/MM/yyyy h:mm:ss'}} </p>
+        <p class="mb-1">Vitesse max : {{path.getMaxspeedpositon().getSpeed() * 3.6 | number: '1.0-1' }} km/h </p>
+        <p class="mb-1">Vitesse moyenne : {{path.getAveragespeed() * 3.6 | number: '1.0-1' }} km/h </p>
+        <p class="mb-1">Distance : {{path.getDistance() / 1000 | number: '1.0-1' }} km</p>
+     <p class="mb-1">Durée : {{path.getDuration().getSeconds() * 1000 | date:'hh:mm' }}</p>
+    </div>
+</div>
+<app-map class="col-md-9"></app-map>

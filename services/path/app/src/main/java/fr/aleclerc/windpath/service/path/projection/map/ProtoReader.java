@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.service.path.projection;
+package fr.aleclerc.windpath.service.path.projection.map;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;

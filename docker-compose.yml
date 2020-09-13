@@ -16,9 +16,9 @@ services:
       AXONIQ_AXONSERVER_NAME: windpath_axonserver
       AXONSERVER_HOSTNAME: axonserver
       AXONIQ_AXONSERVER_DEVMODE_ENABLED: "true"
-  envoy:
+  proxy:
     build:
-      context: ./web/envoy/
+      context: ./proxy/
       dockerfile: ./Dockerfile
     image: windpath/proxy:latest
     ports:
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./log:/log
     ports:
-      - "6969:6969"
+      - "8084:6969"
 volumes:
   axonserver-data:
   axonserver-events:

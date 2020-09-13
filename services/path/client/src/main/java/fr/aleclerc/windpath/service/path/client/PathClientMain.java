@@ -2,6 +2,7 @@ package fr.aleclerc.windpath.service.path.client;
 
 import com.google.protobuf.Message;
 import fr.aleclerc.windpath.service.path.api.*;
+import fr.aleclerc.windpath.service.path.api.domain.MutinyPathGrpc;
 import fr.aleclerc.windpath.service.path.api.projection.MutinyPathProjectionGrpc;
 import fr.aleclerc.windpath.service.path.api.projection.PathSession;
 import io.quarkus.grpc.runtime.annotations.GrpcService;

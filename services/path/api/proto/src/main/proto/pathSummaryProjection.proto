@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.aleclerc.windpath.service.path.api.projection";
+option java_outer_classname = "PathSummaryProjectionService";
+
+package path.projection;
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+service PathSummaryProjection {
+    rpc getPathSummaryEventStream (PathSession) returns (stream PathSummaryProjectionEvent) {
+    }
+    rpc getPathSummary (path.common.ProtoUUID) returns (PathSummary) {
+    }
+}
+
+message PathSession {
+}
+
+message PathSummaryProjectionEvent {
+    oneof event {
+        CurrentSummaryStateEvent currentStateEvent = 1;
+        PathSummaryCreatedEvent pathCreatedEvent = 2;
+        PathSummaryRenamedEvent pathRenamedEvent = 3;
+        PathSummaryRemovedEvent pathRemovedEvent = 4;
+    }
+}
+
+message PathSummaryCreatedEvent {
+    PathSummary path = 1;
+}
+
+message PathSummaryRenamedEvent {
+    path.common.ProtoUUID id = 1;
+    string name = 2;
+}
+
+message PathSummaryRemovedEvent {
+    path.common.ProtoUUID id = 1;
+}
+
+message CurrentSummaryStateEvent {
+    repeated PathSummary paths = 1;
+}
+
+message PathSummary {
+    path.common.ProtoUUID id = 1;
+    string name =2;
+    google.protobuf.Timestamp time = 3;
+    google.protobuf.Duration duration = 4;
+    double averageSpeed = 5;
+    double maxSpeed = 6;
+    double distance = 7;
+}

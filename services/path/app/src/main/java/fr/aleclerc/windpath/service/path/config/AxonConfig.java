@@ -5,8 +5,11 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import fr.aleclerc.windpath.service.path.api.IPathService;
 import fr.aleclerc.windpath.service.path.api.IPathSummaryEventStream;
+import fr.aleclerc.windpath.service.path.api.IPathSummaryService;
 import fr.aleclerc.windpath.service.path.domain.PathAggregate;
+import fr.aleclerc.windpath.service.path.projection.PathProjection;
 import fr.aleclerc.windpath.service.path.projection.PathSummaryProjection;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.runtime.Startup;
@@ -36,6 +39,7 @@ public class AxonConfig {
     private final static String CLIENT_ID = "";
     private final Configuration config;
     private final PathSummaryProjection pathSummaryProjection;
+    private final PathProjection pathProjection;
 
     public boolean verify(String idTokenString) throws GeneralSecurityException, IOException {
         GoogleIdToken idToken = tokenVerifier().verify(idTokenString);
@@ -59,7 +63,8 @@ public class AxonConfig {
 
     public AxonConfig() throws IOException {
         LOGGER.info("Init axon config");
-       this.pathSummaryProjection = new PathSummaryProjection();
+        this.pathSummaryProjection = new PathSummaryProjection();
+        this.pathProjection = new PathProjection();
         final Configurer configurer = DefaultConfigurer.defaultConfiguration()
                 .configureSerializer(c -> new ProtoSerializer())
                 //  .configureMessageSerializer(c -> new ProtoSerializer())
@@ -67,7 +72,8 @@ public class AxonConfig {
                 .configureAggregate(AggregateConfigurer.defaultConfiguration(PathAggregate.class)
                         .configureCommandTargetResolver(configuration -> new ProtoCommandTargetResolver()))
                 .eventProcessing(eventProcessingConfigurer ->
-                        eventProcessingConfigurer.registerEventHandler(conf -> pathSummaryProjection));
+                        eventProcessingConfigurer.registerEventHandler(conf -> pathSummaryProjection)
+                                .registerEventHandler(conf -> pathProjection));
         this.config = configurer.start();
 
     }
@@ -88,6 +94,18 @@ public class AxonConfig {
     @DefaultBean
     public IPathSummaryEventStream pathSummaryEventStream() {
         return pathSummaryProjection;
+    }
+
+    @Produces
+    @DefaultBean
+    public IPathSummaryService pathSummaryService() {
+        return pathSummaryProjection;
+    }
+
+    @Produces
+    @DefaultBean
+    public IPathService pathService() {
+        return pathProjection;
     }
 
     @Produces

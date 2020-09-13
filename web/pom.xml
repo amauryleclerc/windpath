@@ -43,7 +43,7 @@
                                     <version>${project.parent.version}</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>src/app</outputDirectory>
+                                    <outputDirectory>target</outputDirectory>
                                   <fileMappers>
                                     <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
                                       <pattern>windpath-path-service-api-proto-${project.parent.version}</pattern>

@@ -1,51 +1,63 @@
 import { Injectable } from '@angular/core';
-import * as grpcWeb from 'grpc-web';
-import { PathClient } from '../proto/PathcommandsServiceClientPb';
-import { GenericResponse, ProtoUUID } from '../proto/common_pb';
-import { GpxXmlWrapper } from '../proto/gpx_pb';
-import { PathProjectionClient } from '../proto/PatheventprojectionServiceClientPb';
-import { PathCommand, CreatePathFromGpxCommand } from '../proto/pathcommands_pb';
-import { Observable, from, defer } from 'rxjs';
-import { map, flatMap } from 'rxjs/operators';
-import { Message } from 'google-protobuf';
-import { PathSession } from '../proto/patheventprojection_pb';
+import { PathSummaryProjection } from '../proto-gen/pathSummaryProjection_pb_service';
+import { PathSession, PathSummaryProjectionEvent, PathSummary, CurrentSummaryStateEvent, PathSummaryCreatedEvent } from '../proto-gen/pathSummaryProjection_pb';
+import { Observable } from 'rxjs';
+import { GrpcClientService } from './grpc-client.service';
+import { defer, of, timer, merge, interval } from 'rxjs';
+import { map, tap, retryWhen, delayWhen } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PathService {
-  private pathProjectionService: PathProjectionClient;
 
-  constructor() {
-    this.pathProjectionService = new PathProjectionClient('http://localhost:8082', null, null);
+  public paths: Array<PathSummary>;
+
+
+  constructor(private client: GrpcClientService) {
+    this.paths = new Array();
+    this.getPathSummaryEventStream()
+    .pipe(
+      retryWhen(errors =>
+        errors.pipe(
+          tap(val => console.error(`Error on getPathSummaryEventStream : ${val}`)),
+          tap(val =>   this.paths.splice(0, this.paths.length)),
+          delayWhen(val => timer(5000))
+        )
+      )
+    )
+    .subscribe(v => this.onEvent(v));
   }
 
-
-  public getPathSummaryEventStream(): Observable<GenericResponse> {
-    const session: PathSession = new PathSession();
-    return this.grpcStreamtoObservable(this.pathProjectionService.getPathSummaryEventStream.bind(this.pathProjectionService), session);
-  }
-
-  private grpcStreamtoObservable(grpcStreamFn, opts): Observable<any> {
-    return Observable.create(observer => {
-      const streamCall: grpcWeb.ClientReadableStream<any> = grpcStreamFn(opts);
-      console.log('connect');
-      streamCall.on('data', next => {
-        console.log(next);
-        observer.next(next);
-      });
-      streamCall.on('end', () => observer.complete());
-      streamCall.on('error', err => observer.error(err));
-      streamCall.on('status', status => console.log(status));
-    })
-    .pipe(map((v: Message) => v.toObject()));
-  }
-
-  private grpcToObservable(grpcFn, opts): Observable<any> {
+  public getPathSummaryEventStream(): Observable<PathSummaryProjectionEvent> {
     return defer(() => {
-      return from(grpcFn(opts)) as Observable<Message>;
-    })
-      .pipe(map(v => v.toObject()));
+      const session: PathSession = new PathSession();
+      return this.client.getStream(PathSummaryProjection.getPathSummaryEventStream, session);
+    });
   }
+
+
+  private onEvent(event: PathSummaryProjectionEvent) {
+    console.log('onEvent', event);
+    if (event.hasCurrentstateevent()) {
+      this.onCurrentstateevent(event.getCurrentstateevent());
+    }
+    if (event.hasPathcreatedevent()) {
+      this.onPathcreatedevent(event.getPathcreatedevent());
+    }
+  }
+
+  private onCurrentstateevent(event: CurrentSummaryStateEvent) {
+    this.paths.splice(0, this.paths.length);
+    event.getPathsList().forEach(element => {
+      this.paths.push(element);
+    });
+
+  }
+  private onPathcreatedevent(event: PathSummaryCreatedEvent) {
+
+    this.paths.push(event.getPath());
+  }
+
 
 }

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.aleclerc.windpath.service.path.api.domain";
+option java_outer_classname = "PathEvents";
+
+package path.domain;
+import "gpx.proto";
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+message PathCreatedFromGpxEvent {
+    reserved 2;
+    path.common.ProtoUUID id = 1;
+    path.gpx.Track track = 3;
+    google.protobuf.Timestamp time = 4;
+    path.gpx.Bounds bounds = 5;
+    path.gpx.Point maxSpeedPoint = 6;
+    google.protobuf.Duration duration = 7;
+    double averageSpeed = 8;
+    double distance = 9;
+}
+
+message PathRenamedEvent {
+    path.common.ProtoUUID id = 1;
+    string name = 2;
+}
+
+message PathRemovedEvent {
+    path.common.ProtoUUID id = 1;
+}

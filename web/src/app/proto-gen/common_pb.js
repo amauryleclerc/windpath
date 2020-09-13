@@ -248,8 +248,8 @@ proto.path.common.ProtoUUID.prototype.toObject = function(opt_includeInstance) {
  */
 proto.path.common.ProtoUUID.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mostsigbits: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    leastsigbits: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    mostsigbits: jspb.Message.getFieldWithDefault(msg, 1, "0"),
+    leastsigbits: jspb.Message.getFieldWithDefault(msg, 2, "0")
   };
 
   if (includeInstance) {
@@ -287,11 +287,11 @@ proto.path.common.ProtoUUID.deserializeBinaryFromReader = function(msg, reader) 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readSfixed64());
+      var value = /** @type {string} */ (reader.readFixed64String());
       msg.setMostsigbits(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readSfixed64());
+      var value = /** @type {string} */ (reader.readFixed64String());
       msg.setLeastsigbits(value);
       break;
     default:
@@ -324,15 +324,15 @@ proto.path.common.ProtoUUID.prototype.serializeBinary = function() {
 proto.path.common.ProtoUUID.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMostsigbits();
-  if (f !== 0) {
-    writer.writeSfixed64(
+  if (parseInt(f, 10) !== 0) {
+    writer.writeFixed64String(
       1,
       f
     );
   }
   f = message.getLeastsigbits();
-  if (f !== 0) {
-    writer.writeSfixed64(
+  if (parseInt(f, 10) !== 0) {
+    writer.writeFixed64String(
       2,
       f
     );
@@ -341,38 +341,38 @@ proto.path.common.ProtoUUID.serializeBinaryToWriter = function(message, writer) 
 
 
 /**
- * optional sfixed64 mostSigBits = 1;
- * @return {number}
+ * optional fixed64 mostSigBits = 1;
+ * @return {string}
  */
 proto.path.common.ProtoUUID.prototype.getMostsigbits = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, "0"));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.path.common.ProtoUUID} returns this
  */
 proto.path.common.ProtoUUID.prototype.setMostsigbits = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3StringIntField(this, 1, value);
 };
 
 
 /**
- * optional sfixed64 leastSigBits = 2;
- * @return {number}
+ * optional fixed64 leastSigBits = 2;
+ * @return {string}
  */
 proto.path.common.ProtoUUID.prototype.getLeastsigbits = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, "0"));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.path.common.ProtoUUID} returns this
  */
 proto.path.common.ProtoUUID.prototype.setLeastsigbits = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3StringIntField(this, 2, value);
 };
 
 

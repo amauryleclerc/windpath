@@ -1,6 +1,6 @@
 package fr.aleclerc.windpath.service.path.api;
 
-import io.vertx.reactivex.ext.auth.oauth2.providers.GoogleAuth;
+import fr.aleclerc.windpath.service.path.api.common.ProtoUUID;
 
 import java.util.UUID;
 

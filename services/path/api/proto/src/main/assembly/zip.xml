@@ -8,14 +8,7 @@
     <fileSets>
         <fileSet>
             <outputDirectory>/</outputDirectory>
-            <directory>${project.build.directory}/generated-sources/protobuf/js</directory>
-            <includes>
-                <include>**/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <outputDirectory>/</outputDirectory>
-            <directory>${project.build.directory}/generated-sources/protobuf/grpc-web</directory>
+            <directory>src/main/proto</directory>
             <includes>
                 <include>**/*.*</include>
             </includes>

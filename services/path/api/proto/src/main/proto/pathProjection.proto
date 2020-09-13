@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.aleclerc.windpath.service.path.api.projection";
+option java_outer_classname = "PathProjectionService";
+
+package path.projection;
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+service PathProjection {
+    rpc getPath(path.common.ProtoUUID) returns (Path) {
+    }
+}
+
+message Path {
+    path.common.ProtoUUID id = 1;
+    string name =2;
+    google.protobuf.Timestamp time = 3;
+    repeated PathSegment segments = 4;
+    Position maxSpeedPositon = 5;
+    google.protobuf.Duration duration = 6;
+    double averageSpeed = 7;
+    double distance = 8;
+    Bounds bounds = 9;
+}
+
+message Bounds {
+    Position cornerA = 1;
+    Position cornerB = 2;
+}
+
+message PathSegment {
+    Position pointA = 1;
+    Position pointB = 2;
+    double speed = 3;
+}
+
+message Position {
+    double lat = 1;
+    double lon = 2;
+    double speed = 3;
+}
