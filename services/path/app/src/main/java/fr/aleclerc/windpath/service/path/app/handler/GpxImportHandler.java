@@ -1,5 +1,7 @@
-package fr.aleclerc.windpath.service.path.handler;
+package fr.aleclerc.windpath.service.path.app.handler;
 
+import com.google.common.collect.Maps;
+import com.google.protobuf.Message;
 import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.Timestamps;
 import com.topografix.gpx._1._0.BoundsType;
@@ -7,9 +9,12 @@ import com.topografix.gpx._1._0.Gpx;
 import fr.aleclerc.windpath.service.path.api.common.GenericResponse;
 import fr.aleclerc.windpath.service.path.api.domain.CreatePathFromGpxCommand;
 import fr.aleclerc.windpath.service.path.api.gpx.*;
-import fr.aleclerc.windpath.service.path.config.PathCommandGateway;
+import fr.aleclerc.windpath.service.path.app.config.IPathCommandGateway;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
+import org.axonframework.commandhandling.CommandBus;
+import org.axonframework.commandhandling.CommandMessage;
+import org.axonframework.commandhandling.GenericCommandMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,9 +24,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Singleton
@@ -29,13 +33,17 @@ public class GpxImportHandler extends MutinyGpxImportServiceGrpc.GpxImportServic
 
     private final static Logger LOGGER = LoggerFactory.getLogger(GpxImportHandler.class);
     @Inject
-    PathCommandGateway gateway;
+    IPathCommandGateway gateway;
+
+    @Inject
+    CommandBus bus;
+
 
     @Override
     public Uni<GenericResponse> importGpx(GpxXmlWrapper request) {
         return Uni.createFrom().optional(() -> createGpx(request))
                 .toMulti().flatMap(v -> Multi.createFrom().iterable(this.createCommands(v)))
-                .flatMap(v -> Multi.createFrom().completionStage(gateway.sendCommand(v, UUID.randomUUID())))
+                .flatMap(v -> send(v, UUID.randomUUID()).toMulti())
                 .collectItems().asList()
                 .map(message -> {
                     final GenericResponse.Builder builder = GenericResponse.newBuilder().setSuccess(true);
@@ -51,6 +59,24 @@ public class GpxImportHandler extends MutinyGpxImportServiceGrpc.GpxImportServic
                         .setSuccess(false)
                         .setMessage(e.getMessage())
                         .build());
+    }
+
+    private Uni<String> send(Message command, UUID agg) {
+        return Uni.createFrom().emitter(uniEmitter -> {
+            bus.dispatch(GenericCommandMessage.asCommandMessage(command).andMetaData(Map.of("id", agg)), (m, r) -> {
+                if(r.isExceptional()){
+                    uniEmitter.fail(r.exceptionResult());
+                }else{
+                    uniEmitter.complete(r.getIdentifier());
+                }
+            });
+        });
+    }
+
+    private Map<String, UUID> createMap() {
+        HashMap<String, UUID> map = new HashMap<>();
+        map.put("id", UUID.randomUUID());
+        return map;
     }
 
     private List<CreatePathFromGpxCommand> createCommands(Gpx gpx) {

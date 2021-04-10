@@ -1,0 +1,689 @@
+[
+{
+  "name":"byte[]"
+},
+{
+  "name":"com.fasterxml.jackson.databind.deser.Deserializers[]"
+},
+{
+  "name":"com.fasterxml.jackson.databind.deser.KeyDeserializers[]"
+},
+{
+  "name":"com.fasterxml.jackson.databind.deser.ValueInstantiators[]"
+},
+{
+  "name":"com.fasterxml.jackson.databind.ext.Java7HandlersImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.fasterxml.jackson.databind.ser.Serializers[]"
+},
+{
+  "name":"com.google.common.util.concurrent.AbstractFuture",
+  "fields":[
+    {"name":"listeners", "allowUnsafeAccess":true}, 
+    {"name":"value", "allowUnsafeAccess":true}, 
+    {"name":"waiters", "allowUnsafeAccess":true}
+  ]
+},
+{
+  "name":"com.google.common.util.concurrent.AbstractFuture$Waiter",
+  "fields":[
+    {"name":"next", "allowUnsafeAccess":true}, 
+    {"name":"thread", "allowUnsafeAccess":true}
+  ]
+},
+{
+  "name":"com.google.protobuf.ExtensionRegistry",
+  "methods":[{"name":"getEmptyRegistry","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.jndi.dns.DnsContextFactory"
+},
+{
+  "name":"com.sun.xml.bind.v2.model.nav.ReflectionNavigator",
+  "methods":[{"name":"getInstance","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.ArrayElementLeafProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.ArrayElementNodeProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.ArrayReferenceNodeProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.SingleElementLeafProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.SingleElementNodeProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.SingleMapNodeProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.sun.xml.bind.v2.runtime.property.SingleReferenceNodeProperty",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.topografix.gpx._1._0.BoundsType",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx$Rte",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx$Rte$Rtept",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx$Trk",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx$Trk$Trkseg",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx$Trk$Trkseg$Trkpt",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.Gpx$Wpt",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.topografix.gpx._1._0.ObjectFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.api.IPathService",
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.api.IPathSummaryEventStream",
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.api.IPathSummaryService",
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.api.domain.CreatePathFromGpxCommand"
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.api.domain.PathCreatedFromGpxEvent"
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.config.IPathCommandGateway",
+  "allPublicMethods":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.config.ProtoCommandTargetResolver",
+  "allDeclaredMethods":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.config.ProtoRoutingStrategy",
+  "allDeclaredMethods":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.config.ProtoSerializer",
+  "allDeclaredMethods":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.domain.PathAggregate",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.projection.PathProjection",
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"fr.aleclerc.windpath.service.path.app.projection.PathSummaryProjection",
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"io.grpc.internal.DnsNameResolverProvider"
+},
+{
+  "name":"io.grpc.internal.JndiResourceResolverFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"io.grpc.internal.PickFirstLoadBalancerProvider"
+},
+{
+  "name":"io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider"
+},
+{
+  "name":"java.io.Serializable",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Boolean",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Comparable",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Enum",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Iterable",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Object",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.String",
+  "methods":[{"name":"toString","parameterTypes":[] }]
+},
+{
+  "name":"java.net.InetSocketAddress",
+  "methods":[{"name":"getHostString","parameterTypes":[] }]
+},
+{
+  "name":"java.nio.Buffer",
+  "fields":[{"name":"address", "allowUnsafeAccess":true}]
+},
+{
+  "name":"java.security.MessageDigestSpi"
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.util.AbstractCollection",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.AbstractList",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.ArrayList",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"java.util.Collection",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.Collections$SingletonList",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.List",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.RandomAccess",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.UUID",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "allPublicConstructors":true,
+  "methods":[
+    {"name":"add","parameterTypes":["long"] }, 
+    {"name":"sum","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.util.function.BiFunction",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.function.Function",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.function.Predicate",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.util.function.UnaryOperator",
+  "allDeclaredMethods":true
+},
+{
+  "name":"javax.naming.directory.InitialDirContext"
+},
+{
+  "name":"javax.xml.bind.annotation.W3CDomHandler",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"javax.xml.bind.annotation.XmlAccessorType"
+},
+{
+  "name":"javax.xml.bind.annotation.XmlAnyElement",
+  "methods":[{"name":"value","parameterTypes":[] }]
+},
+{
+  "name":"javax.xml.bind.annotation.XmlType",
+  "methods":[{"name":"factoryClass","parameterTypes":[] }]
+},
+{
+  "name":"org.axonframework.axonserver.connector.AxonServerConfiguration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.AxonServerConnectionManager",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.ManagedChannelCustomizer",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.TargetContextResolver",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.command.AxonServerCommandBus",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.command.CommandPriorityCalculator",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.event.axon.AxonServerEventStore",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.axonserver.connector.processor.EventProcessorControlService",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.commandhandling.CommandBus",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.commandhandling.CommandHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.commandhandling.CommandMessageHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.commandhandling.DuplicateCommandHandlerResolver",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.commandhandling.LoggingDuplicateCommandHandlerResolver",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.commandhandling.distributed.RoutingStrategy",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.common.Priority",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.common.transaction.NoTransactionManager",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.common.transaction.TransactionManager",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.config.EventProcessingConfiguration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.config.EventProcessingConfigurer",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.config.EventProcessingModule",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.config.ModuleConfiguration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.config.TagsConfiguration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.AbstractEventBus",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.AbstractEventProcessor",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.DomainEventSequenceAware",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.ErrorHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.EventBus",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.EventHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.EventProcessor",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.ListenerInvocationErrorHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.LoggingErrorHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.PropagatingErrorHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.StreamingEventProcessor",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.TrackingEventProcessor",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.TrackingEventProcessorConfiguration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.async.SequencingPolicy",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.async.SequentialPerAggregatePolicy",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.tokenstore.TokenStore",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventhandling.tokenstore.inmemory.InMemoryTokenStore",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.AbstractAggregateFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.AggregateFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.EventSourcingHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.EventSourcingRepository",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.GenericAggregateFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.NoSnapshotTriggerDefinition",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.SnapshotTriggerDefinition",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.eventstore.AbstractEventStore",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.eventstore.EventStore",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.eventsourcing.snapshotting.SnapshotFilter",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.lifecycle.ShutdownHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.lifecycle.StartHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.Distributed",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.MessageDispatchInterceptorSupport",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.MessageHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.MessageHandlerInterceptorSupport",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.MetaData"
+},
+{
+  "name":"org.axonframework.messaging.ScopeAware",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.StreamableMessageSource",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.SubscribableMessageSource",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.annotation.MessageHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.annotation.MetaDataValue",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.annotation.MultiParameterResolverFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.annotation.ParameterResolverFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.unitofwork.RollbackConfiguration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.unitofwork.RollbackConfigurationType",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.messaging.unitofwork.RollbackConfigurationType$2",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.AbstractRepository",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.AggregateAnnotationCommandHandler",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.AggregateIdentifier",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.AggregateRoot",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.CommandTargetResolver",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.EntityId",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.LockingRepository",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.Repository",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.inspection.AggregateMetaModelFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.inspection.AggregateModel",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.inspection.AnnotatedAggregateMetaModelFactory",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.inspection.AnnotatedAggregateMetaModelFactory$AnnotatedAggregateModel",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.modelling.command.inspection.EntityModel",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.serialization.Serializer",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.serialization.upcasting.GenericUpcasterChain",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.serialization.upcasting.Upcaster",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.serialization.upcasting.event.EventUpcaster",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.axonframework.serialization.upcasting.event.EventUpcasterChain",
+  "allDeclaredMethods":true
+},
+{
+  "name":"sun.misc.Unsafe",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"arrayBaseOffset","parameterTypes":["java.lang.Class"] }, 
+    {"name":"arrayIndexScale","parameterTypes":["java.lang.Class"] }, 
+    {"name":"copyMemory","parameterTypes":["long","long","long"] }, 
+    {"name":"copyMemory","parameterTypes":["java.lang.Object","long","java.lang.Object","long","long"] }, 
+    {"name":"getBoolean","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getByte","parameterTypes":["long"] }, 
+    {"name":"getByte","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getDouble","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getFloat","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getInt","parameterTypes":["long"] }, 
+    {"name":"getInt","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getLong","parameterTypes":["long"] }, 
+    {"name":"getLong","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getObject","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"objectFieldOffset","parameterTypes":["java.lang.reflect.Field"] }, 
+    {"name":"putBoolean","parameterTypes":["java.lang.Object","long","boolean"] }, 
+    {"name":"putByte","parameterTypes":["long","byte"] }, 
+    {"name":"putByte","parameterTypes":["java.lang.Object","long","byte"] }, 
+    {"name":"putDouble","parameterTypes":["java.lang.Object","long","double"] }, 
+    {"name":"putFloat","parameterTypes":["java.lang.Object","long","float"] }, 
+    {"name":"putInt","parameterTypes":["long","int"] }, 
+    {"name":"putInt","parameterTypes":["java.lang.Object","long","int"] }, 
+    {"name":"putLong","parameterTypes":["long","long"] }, 
+    {"name":"putLong","parameterTypes":["java.lang.Object","long","long"] }, 
+    {"name":"putObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] }
+  ]
+},
+{
+  "name":"sun.security.provider.DRBG",
+  "methods":[{"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA2$SHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]

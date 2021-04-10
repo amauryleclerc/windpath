@@ -1,9 +1,13 @@
-package fr.aleclerc.windpath.service.path.handler;
+package fr.aleclerc.windpath.service.path.app.handler;
 
 import fr.aleclerc.windpath.service.path.api.IPathSummaryEventStream;
 import fr.aleclerc.windpath.service.path.api.IPathSummaryService;
 import fr.aleclerc.windpath.service.path.api.common.ProtoUUID;
 import fr.aleclerc.windpath.service.path.api.projection.*;
+import fr.aleclerc.windpath.service.path.api.projection.MutinyPathSummaryProjectionGrpc;
+import fr.aleclerc.windpath.service.path.api.projection.PathSession;
+import fr.aleclerc.windpath.service.path.api.projection.PathSummary;
+import fr.aleclerc.windpath.service.path.api.projection.PathSummaryProjectionEvent;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import org.slf4j.Logger;

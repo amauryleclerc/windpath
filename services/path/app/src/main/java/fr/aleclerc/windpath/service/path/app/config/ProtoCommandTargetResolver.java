@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.service.path.config;
+package fr.aleclerc.windpath.service.path.app.config;
 
 import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.modelling.command.CommandTargetResolver;

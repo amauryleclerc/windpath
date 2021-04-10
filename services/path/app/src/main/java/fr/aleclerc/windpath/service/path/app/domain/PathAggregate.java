@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.service.path.domain;
+package fr.aleclerc.windpath.service.path.app.domain;
 
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
@@ -6,9 +6,11 @@ import com.google.protobuf.util.Durations;
 import com.google.protobuf.util.Timestamps;
 import fr.aleclerc.windpath.service.path.api.UUIDUtils;
 import fr.aleclerc.windpath.service.path.api.domain.*;
+import fr.aleclerc.windpath.service.path.api.domain.*;
 import fr.aleclerc.windpath.service.path.api.gpx.Point;
 import fr.aleclerc.windpath.service.path.api.gpx.Segment;
 import fr.aleclerc.windpath.service.path.api.gpx.Track;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import net.sf.geographiclib.Geodesic;
 import net.sf.geographiclib.GeodesicData;
 import org.axonframework.commandhandling.CommandHandler;
@@ -25,6 +27,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
+@RegisterForReflection
 @AggregateRoot
 public class PathAggregate {
     private final static Logger LOGGER = LoggerFactory.getLogger(PathAggregate.class);

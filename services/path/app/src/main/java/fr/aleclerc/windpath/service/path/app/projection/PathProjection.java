@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.service.path.projection;
+package fr.aleclerc.windpath.service.path.app.projection;
 
 import fr.aleclerc.windpath.service.path.api.IPathService;
 import fr.aleclerc.windpath.service.path.api.common.ProtoUUID;
@@ -62,7 +62,7 @@ public class PathProjection implements IPathService {
         return Position.newBuilder().setLat(p.getLat()).setLon(p.getLon()).setSpeed(p.getSpeed()).build();
     }
 
-    private fr.aleclerc.windpath.service.path.api.projection.Bounds convert(Bounds b) {
+    private fr.aleclerc.windpath.service.path.api.projection.Bounds convert(fr.aleclerc.windpath.service.path.api.gpx.Bounds b) {
         return fr.aleclerc.windpath.service.path.api.projection.Bounds.newBuilder()
                 .setCornerA(Position.newBuilder()
                         .setLat(b.getMinlat())

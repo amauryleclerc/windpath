@@ -1,12 +1,12 @@
-package fr.aleclerc.windpath.service.path.projection;
+package fr.aleclerc.windpath.service.path.app.projection;
 
 import fr.aleclerc.windpath.service.path.api.IPathSummaryEventStream;
 import fr.aleclerc.windpath.service.path.api.IPathSummaryService;
-import fr.aleclerc.windpath.service.path.api.UUIDUtils;
 import fr.aleclerc.windpath.service.path.api.common.ProtoUUID;
 import fr.aleclerc.windpath.service.path.api.domain.PathCreatedFromGpxEvent;
 import fr.aleclerc.windpath.service.path.api.domain.PathRemovedEvent;
 import fr.aleclerc.windpath.service.path.api.domain.PathRenamedEvent;
+import fr.aleclerc.windpath.service.path.api.projection.*;
 import fr.aleclerc.windpath.service.path.api.projection.*;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 public class PathSummaryProjection implements IPathSummaryEventStream, IPathSummaryService {
 

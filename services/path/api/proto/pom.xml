@@ -12,6 +12,10 @@
     </parent>
     <artifactId>windpath-path-service-api-proto</artifactId>
 
+    <properties>
+        <quarkus.generate-code.grpc.scan-for-imports>all</quarkus.generate-code.grpc.scan-for-imports>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -24,61 +28,7 @@
     </dependencies>
 
     <build>
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.6.2</version>
-            </extension>
-        </extensions>
-
         <plugins>
-            <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.6.1</version>
-                <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}
-                    </protocArtifact>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>compile-java</id>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                        <configuration>
-                            <pluginId>grpc-java</pluginId>
-                            <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
-                            </pluginArtifact>
-                            <protocPlugins>
-                                <protocPlugin>
-                                    <id>quarkus-grpc-protoc-plugin</id>
-                                    <groupId>io.quarkus</groupId>
-                                    <artifactId>quarkus-grpc-protoc-plugin</artifactId>
-                                    <version>${quarkus.platform.version}</version>
-                                    <mainClass>io.quarkus.grpc.protoc.plugin.MutinyGrpcGenerator</mainClass>
-                                </protocPlugin>
-                            </protocPlugins>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile-js</id>
-                        <goals>
-                            <goal>compile-js</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                        <configuration>
-                            <pluginId>grpc-web</pluginId>
-                            <pluginArtifact>io.grpc:protoc-gen-grpc-web:1.1.0:exe:${os.detected.classifier}
-                            </pluginArtifact>
-                            <pluginParameter>import_style=typescript,mode=grpcweb</pluginParameter>
-                            <javaScriptOptions>import_style=commonjs,binary</javaScriptOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>

@@ -1,4 +1,4 @@
-package fr.aleclerc.windpath.service.path.handler;
+package fr.aleclerc.windpath.service.path.app.handler;
 
 import fr.aleclerc.windpath.service.path.api.IPathService;
 import fr.aleclerc.windpath.service.path.api.common.ProtoUUID;

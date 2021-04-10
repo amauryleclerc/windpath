@@ -1,8 +1,11 @@
 package fr.aleclerc.windpath.service.path.client;
 
-import com.google.protobuf.Message;
-import fr.aleclerc.windpath.service.path.api.*;
+import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.Timestamps;
+import fr.aleclerc.windpath.service.path.api.UUIDUtils;
+import fr.aleclerc.windpath.service.path.api.domain.CreatePathFromGpxCommand;
 import fr.aleclerc.windpath.service.path.api.domain.MutinyPathGrpc;
+import fr.aleclerc.windpath.service.path.api.domain.PathCommand;
 import fr.aleclerc.windpath.service.path.api.projection.MutinyPathProjectionGrpc;
 import fr.aleclerc.windpath.service.path.api.projection.PathSession;
 import io.quarkus.grpc.runtime.annotations.GrpcService;
@@ -32,14 +35,15 @@ public class PathClientMain implements QuarkusApplication {
     public int run(String... args) throws Exception {
 //
 //        System.out.println("RUN");
-//        UUID id = UUID.fromString("ebf2e5fc-1015-4705-9c13-07fea3a70238");
+        UUID id = UUID.fromString("ebf2e5fc-1015-4705-9c13-07fea3a70238");
 //      //  ProtoUUID id = UUIDUtils.randomProtoUUID();
 ////        System.out.println("id = " + UUIDUtils.toUUID(id));
-//        PathCommand createCommand = PathCommand.newBuilder()
-//                .setId(UUIDUtils.toProtoUUID(id))
-//                .setCreatePathFromGpxCommand(CreatePathFromGpxCommand.newBuilder()
-//                        .build())
-//                .build();
+        PathCommand createCommand = PathCommand.newBuilder()
+                .setId(UUIDUtils.toProtoUUID(id))
+                .setCreatePathFromGpxCommand(CreatePathFromGpxCommand.newBuilder()
+                        .setTime(Timestamps.MIN_VALUE)
+                        .build())
+                .build();
 //        PathCommand renameCommand = PathCommand.newBuilder()
 //                .setId(UUIDUtils.toProtoUUID(id))
 //                .setRenamePathCommand(RenamePathCommand.newBuilder()
@@ -54,10 +58,10 @@ public class PathClientMain implements QuarkusApplication {
 
         System.out.println("run");
         PathSession session = PathSession.newBuilder().build();
-        streamClient.getPathSummaryEventStream(session)
+        client.apply(createCommand)
                 .onItem().invoke(v -> System.out.println("v = " + v))
                 .onFailure().invoke(v -> System.out.println("err = " + v))
-                .collectItems().asList().await().indefinitely();
+                .await().indefinitely();
         System.out.println("end");
         return 10;
     }

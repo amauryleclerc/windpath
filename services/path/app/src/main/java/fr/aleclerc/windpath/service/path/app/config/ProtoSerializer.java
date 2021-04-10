@@ -1,6 +1,8 @@
-package fr.aleclerc.windpath.service.path.config;
+package fr.aleclerc.windpath.service.path.app.config;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.Parser;
 import org.axonframework.serialization.*;
 import org.axonframework.serialization.json.JacksonSerializer;
 import org.slf4j.Logger;
@@ -8,14 +10,17 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 public class ProtoSerializer implements Serializer {
     private final static Logger LOGGER = LoggerFactory.getLogger(ProtoSerializer.class);
     private static final String PARSE_FROM = "parseFrom";
     private final Converter converter;
     private final JacksonSerializer jsonSerializer;
+    private final Map<Class<?>, Parser<?>> parsers;
 
-    public ProtoSerializer() {
+    public ProtoSerializer(Map<Class<?>, Parser<?>> parsers) {
+        this.parsers = parsers;
         this.converter = new ChainingConverter();
         this.jsonSerializer = JacksonSerializer.defaultSerializer();
     }
@@ -40,20 +45,23 @@ public class ProtoSerializer implements Serializer {
     @Override
     public <S, T> T deserialize(SerializedObject<S> serializedObject) {
         final Class<T> clazz = classForType(serializedObject.getType());
-        LOGGER.trace("deserialize {} from {}", clazz, serializedObject.getContentType());
+        LOGGER.info("deserialize {} from {}", clazz, serializedObject.getContentType());
         if (Message.class.isAssignableFrom(clazz) && serializedObject.getContentType().isAssignableFrom(byte[].class)) {
-            try {
-                final Method method = clazz.getDeclaredMethod(PARSE_FROM, byte[].class);
-                return (T) method.invoke(null, serializedObject.getData());
-            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                e.printStackTrace();
-                throw new SerializationException("Error while deserializing object "+clazz+" form "+serializedObject.getContentType(), e);
+            if (parsers.containsKey(clazz)) {
+                try {
+                    final Parser<T> parser = (Parser<T>) parsers.get(clazz);
+                    return parser.parseFrom((byte[]) serializedObject.getData());
+                } catch (InvalidProtocolBufferException e) {
+                    throw new SerializationException("Error while deserializing object " + clazz + " form " + serializedObject.getContentType(), e);
+                }
+            } else {
+                throw new SerializationException("Error while deserializing object " + clazz + " form " + serializedObject.getContentType());
             }
         }
         try {
             return jsonSerializer.deserialize(serializedObject);
-        }catch (Exception e){
-            LOGGER.error("deserializing json {} from {}",clazz,serializedObject.getContentType(), e);
+        } catch (Exception e) {
+            LOGGER.error("deserializing json {} from {}", clazz, serializedObject.getContentType(), e);
             throw e;
         }
 

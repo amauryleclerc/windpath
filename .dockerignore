@@ -1,4 +1,9 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
+**/target/*
+**/node_modules/*
+.git
+.DS_Store
+.gitignore
+Dockerfile
+/target/*
+/node_modules/*
+README.md
