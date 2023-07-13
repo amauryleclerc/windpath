@@ -19,7 +19,7 @@
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>1.13.0.Final</quarkus.platform.version>
         <surefire-plugin.version>2.22.2</surefire-plugin.version>
-        <protobuf.version>3.15.7</protobuf.version>
+        <protobuf.version>3.16.3</protobuf.version>
         <protoc.version>3.15.7</protoc.version>
         <grpc.version>1.36.1</grpc.version>
         <axon.version>4.5</axon.version>
